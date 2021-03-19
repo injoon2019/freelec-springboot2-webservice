@@ -1,5 +1,6 @@
 package com.jojoldu.book.springboot.service.posts;
 
+import com.jojoldu.book.springboot.domain.BaseTimeEntity;
 import com.jojoldu.book.springboot.domain.posts.Posts;
 import com.jojoldu.book.springboot.domain.posts.PostsRepository;
 import com.jojoldu.book.springboot.web.dto.PostsResponseDto;
@@ -11,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Service
-public class PostsService {
+public class PostsService extends BaseTimeEntity {
 
     private final PostsRepository postsRepository;
 

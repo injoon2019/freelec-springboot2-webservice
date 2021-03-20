@@ -23,3 +23,5 @@ com/jojoldu/book/springboot/web/dto/PostsSaveRequestDto.java
 com/jojoldu/book/springboot/domain/posts/Posts.java
  com.jojoldu.book.springboot.domain.posts.Posts
  com.jojoldu.book.springboot.domain.posts.Posts$PostsBuilder
+com/jojoldu/book/springboot/web/IndexController.java
+ com.jojoldu.book.springboot.web.IndexController

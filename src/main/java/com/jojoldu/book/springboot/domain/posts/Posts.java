@@ -39,3 +39,4 @@ public class Posts extends BaseTimeEntity {
         this.content = content;
     }
 }
+

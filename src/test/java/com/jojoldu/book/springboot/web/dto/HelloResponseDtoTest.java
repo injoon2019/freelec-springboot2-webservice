@@ -1,8 +1,7 @@
 package com.jojoldu.book.springboot.web.dto;
 
-import junit.framework.TestCase;
 import org.assertj.core.api.Assertions;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class HelloResponseDtoTest {
     @Test

@@ -7,8 +7,8 @@ on:
   workflow_dispatch: # (2) 수동 실행
 
 env: # 새로 추가한 부분
-  S3_BUCKET_NAME: logging-system-deploy
-  PROJECT_NAME: playground-logging
+  S3_BUCKET_NAME: logging-system-deploy2
+  PROJECT_NAME: freelec-springboot2-webservice
 
 
 jobs:

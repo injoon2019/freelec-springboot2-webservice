@@ -51,14 +51,28 @@ jobs:
           cp -r .ebextensions deploy/.ebextensions
           cp -r .platform deploy/.platform
           cd deploy && zip -r deploy.zip .
+      ### 새로 추가한 부분 ###
+      - name: Make zip file
+        run: zip -r ./$GITHUB_SHA.zip .
+        shell: bash
 
-      - name: Deploy to EB # (2)
-        uses: einaregilsson/beanstalk-deploy@v14
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: freelec-springboot2-webservice
-          environment_name: freelec-springboot2-webservice
-          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
-          region: ap-northeast-2
-          deployment_package: deploy/deploy.zip
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Upload to S3
+        run: aws s3 cp --region ap-northeast-2 ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
+
+#      - name: Deploy to EB # (2)
+#        uses: einaregilsson/beanstalk-deploy@v14
+#        with:
+#          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#          application_name: freelec-springboot2-webservice
+#          environment_name: freelec-springboot2-webservice
+#          version_label: github-action-${{steps.current-time.outputs.formattedTime}}
+#          region: ap-northeast-2
+#          deployment_package: deploy/deploy.zip
